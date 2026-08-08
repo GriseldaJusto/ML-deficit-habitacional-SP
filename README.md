@@ -33,49 +33,36 @@ abordagem final combina:
    espacial** (Índice de Moran Global, LISA), para checar se o resultado final é estatisticamente
    consistente e espacialmente plausível.
 
-## Principais resultados
-
-| Indicador | Resultado |
-|---|---|
-| R² médio (validação cruzada 5-fold, Random Forest, nível AP) | **0,9234** (± 0,0257) |
-| MAE médio (validação cruzada 5-fold) | **104,25** (± 37,50) |
-| Variável mais importante (SHAP / Permutation Importance) | `Soma_V015` — Outros parentes no domicílio |
-| Auditoria da desagregação (soma dos setores vs. total da AP) | Diferença ≈ 10⁻¹³ (erro de ponto flutuante — consistência preservada) |
-| Índice de Moran Global (autocorrelação espacial das estimativas) | **I = 0,5246** (p = 0,001) |
-| Setores em clusters espaciais estatisticamente significativos (LISA) | **42,7%** (HH: 15,6% · LL: 22,9% · HL: 1,0% · LH: 3,4%) |
-
-<p align="center">
-  <img src="results/figures/09_mapa_deficit_desagregado_setores.png" width="47%" alt="Mapa do déficit habitacional desagregado por setor censitário"/>
-  <img src="results/figures/08_mapa_lisa_clusters.png" width="47%" alt="Mapa de clusters LISA"/>
-</p>
-<p align="center"><em>Esquerda: déficit habitacional estimado por setor censitário. Direita: clusters espaciais (LISA) — em azul, núcleos de alta concentração de déficit (HH).</em></p>
-
 ## Estrutura do repositório
 
 ```
 .
 ├── README.md                      <- este arquivo
-├── requirements.txt                <- dependências Python do projeto
-├── .gitignore
 │
 ├── data/
-│   ├── raw/                        <- dados brutos (ver seção "Dados" abaixo)
-│   │   ├── BD_SP_DEFICIT.xlsx               (Áreas de Ponderação — treino do modelo)
-│   │   ├── BANCO_SP_setorcensitario.xlsx    (Setores Censitários — aplicação do modelo)
-│   │   └── dicionario_variaveis.xlsx        (dicionário completo de variáveis)
-│   └── processed/                  <- saídas intermediárias geradas pelos notebooks (vazio no repo)
+│   └── README.md/ 
+│   └── area_de_ponderacao/                  <- Bases de dados usada na etapa 1
+│   │   ├── BANCO_SP_EXCETOCAPITAL.xlsx              
+│   │   ├── BANCO_SP_EXCETOCAPITAL_setorcensitario.xlsx    
+│   │   ├── BANCO_SPCAPITAL.xlsx        
+│   │   └── BANCO_SPCAPITAL_setorcensitario.xlsx       
+│   └── setores_censitarios/                  <- Bases de dados usada na etapa 2
+│   │   ├── BD_SP_DEFICIT.xlsx               
+│   │   ├── BANCO_SP_setorcensitario.xlsx    
+│   │   └── SP_setores_CD2022.zip       
 │
 ├── notebooks/
-│   ├── 01_area_ponderacao_xgboost.ipynb         <- Fase exploratória (XGBoost)
-│   ├── 02_setor_censitario_desagregacao.ipynb   <- Fase final (Random Forest + desagregação espacial)
-│   └── 03_conceitos_teoricos.ipynb              <- Notebook didático (não faz parte do pipeline)
+│   ├── 01_conceitos_teoricos.ipynb
+│   ├── 02_area_ponderacao_xgboost.ipynb         <- Fase exploratória (XGBoost) 
+│   └── 03_setor_censitario_desagregacao.ipynb   <- Fase final             
 │
 ├── docs/
 │   ├── metodologia.md              <- resumo metodológico das duas fases
+│   ├── DICIONARIO VARIAVEIS.xlsx              <- dicionário de variáveis
 │   └── dicionario_variaveis.md     <- dicionário de variáveis em Markdown
 │
 ├── references/
-│   └── referencias.md              <- bibliografia consolidada do projeto
+│   └── referencias.md              <- bibliografia do projeto
 │
 └── results/
     └── figures/                    <- principais gráficos e mapas gerados (imagens finais)
@@ -83,42 +70,13 @@ abordagem final combina:
 
 ## Como reproduzir
 
-### 1. Ambiente
+### 1. Ordem de execução
 
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-> `geopandas`, `libpysal`, `esda` e `splot` (usados apenas na análise espacial do notebook 02)
-> têm dependências geoespaciais de sistema (GDAL/GEOS/PROJ). Se a instalação via `pip` falhar,
-> recomenda-se usar `conda`/`mamba`:
-> `conda install -c conda-forge geopandas libpysal esda splot`
-
-### 2. Dados
-
-Os arquivos em `data/raw/` já estão neste repositório, **exceto** a malha de setores censitários
-do IBGE (shapefile), necessária apenas na parte final do notebook 02 (mapas e Moran/LISA), que
-não foi incluída por seu tamanho. Baixe o shapefile do estado de São Paulo (Censo 2022) em:
-
-<https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/26565-malhas-de-setores-censitarios-divisoes-intramunicipais.html>
-
-e salve como `data/raw/SP_setores_CD2022.zip` (ou ajuste o caminho na célula correspondente).
-
-O notebook `01_area_ponderacao_xgboost.ipynb` usa os bancos brutos por subconjunto geográfico
-(`BANCO_SPCAPITAL.xlsx`, `BANCO_SP_EXCETOCAPITAL.xlsx` e seus equivalentes por setor), que são
-insumos intermediários anteriores à consolidação em `BD_SP_DEFICIT.xlsx` e **não estão incluídos**
-neste repositório. Se você não os tiver, comece diretamente pelo notebook `02`, que já parte da
-base consolidada.
-
-### 3. Ordem de execução
-
-1. `notebooks/03_conceitos_teoricos.ipynb` *(opcional, mas recomendado)* — explica as técnicas
+1. `notebooks/01_conceitos_teoricos.ipynb` *(opcional, mas recomendado)* — explica as técnicas
    usadas antes de mexer nos dados reais.
-2. `notebooks/01_area_ponderacao_xgboost.ipynb` *(opcional)* — documenta a fase exploratória e por
+2. `notebooks/02_area_ponderacao_xgboost.ipynb` *(opcional)* — documenta a fase exploratória e por
    que a abordagem mudou.
-3. `notebooks/02_setor_censitario_desagregacao.ipynb` — pipeline final, do carregamento dos dados
+3. `notebooks/03_setor_censitario_desagregacao.ipynb` — pipeline final, do carregamento dos dados
    ao mapa final do déficit desagregado.
 
 ## Dados
