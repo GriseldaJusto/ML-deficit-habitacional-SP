@@ -1,22 +1,15 @@
 # Metodologia
 
-Resumo da metodologia aplicada no projeto. Para o detalhamento completo, com fundamentação
-teórica e revisão bibliográfica, ver os relatórios do projeto (não incluídos neste repositório —
-ver nota em [`README.md`](../README.md#relatórios-completos)).
-
 ## Visão geral
 
 O objetivo é estimar o **déficit habitacional** (metodologia da Fundação João Pinheiro — FJP)
 para o estado de São Paulo em **nível de Setor Censitário**, escala em que esse indicador não é
 calculável diretamente, pois depende de variáveis do questionário da amostra do Censo — disponível
-apenas em nível de **Área de Ponderação (AP)**, uma unidade territorial maior (mínimo de ~400
-domicílios).
+apenas em nível de **Área de Ponderação (AP)**, uma unidade territorial maior.
 
 > **Nota sobre a base censitária:** a proposta original previa o Censo Demográfico 2022, mas os
 > microdados da amostra desse Censo ainda não haviam sido divulgados pelo IBGE no início da
-> pesquisa. A modelagem final (Fase 2, abaixo) foi por isso desenvolvida com o **Censo
-> Demográfico de 2010**; a Fase 1 (exploratória, XGBoost) já refletia dados mais recentes,
-> conforme iam sendo liberados.
+> pesquisa.
 
 O projeto foi conduzido em duas fases, com abordagens distintas:
 
