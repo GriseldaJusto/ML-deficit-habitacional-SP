@@ -1,9 +1,7 @@
 # Referências
 
 Bibliografia consolidada do projeto, reunida a partir da proposta de pesquisa, do relatório
-parcial e do relatório final. Organizada por tema para facilitar a consulta. Os relatórios
-completos (com a revisão bibliográfica na íntegra) não fazem parte deste repositório — ver
-[`README.md`](../README.md#relatórios-completos).
+parcial e do relatório final. Organizada por tema para facilitar a consulta. 
 
 ## Déficit habitacional e metodologia FJP
 
@@ -21,12 +19,6 @@ completos (com a revisão bibliográfica na íntegra) não fazem parte deste rep
 - FUNDAÇÃO JOÃO PINHEIRO. Déficit habitacional municipal no Brasil 2010. Belo Horizonte, 2013.
 - FUNDAÇÃO JOÃO PINHEIRO. Metodologia do déficit habitacional e da inadequação de domicílios no
   Brasil – 2016-2019. Belo Horizonte: FJP, 2020.
-- FUNDAÇÃO JOÃO PINHEIRO. Nota Técnica n° 04/2023: Os desafios do cálculo do déficit habitacional
-  frente ao censo demográfico de 2022. Belo Horizonte: FJP, 2023.
-- FUNDAÇÃO JOÃO PINHEIRO. Nota Técnica n° 01/2024: As voltas que o ônus dá: alternativas para o
-  cálculo do ônus excessivo com o aluguel urbano municipal. Belo Horizonte: FJP, 2024.
-- FUNDAÇÃO JOÃO PINHEIRO. Déficit Habitacional no Brasil 2022 / 2023. Belo Horizonte: FJP,
-  2023/2024.
 - GENEVOIS, M. L. P.; COSTA, L. V. B. Carência habitacional e déficit de moradias: questões
   metodológicas. *São Paulo em Perspectiva*, v. 15, n. 1, 2001.
 - GIVISIEZ, G. H.; OLIVEIRA, E. L. de. Privacidade interna das moradias e os arranjos familiares.
@@ -47,18 +39,6 @@ completos (com a revisão bibliográfica na íntegra) não fazem parte deste rep
 - ORGANIZAÇÃO DAS NAÇÕES UNIDAS. Déficit habitacional en América Latina y el Caribe: una
   herramienta para el diagnóstico y el desarrollo de políticas efectivas en vivienda y hábitat.
   Nova York: ONU, 2015.
-
-## Direito à cidade e produção do espaço urbano
-
-- BONDUKI, N. Origens da habitação social no Brasil. São Paulo: Estação Liberdade, 1988/2004.
-- HARVEY, D. Rebel cities: from right to the city to urban revolution. London: Verso, 2012.
-- HARVEY, D. Paris, capital da modernidade. São Paulo: Boitempo, 2015.
-- LEFEBVRE, H. O direito à cidade. Tradução: Rubens Eduardo Frias. São Paulo: Editora Centauro,
-  1991.
-- MARICATO, E. Habitação e Cidade. São Paulo: Atual Editora, 1999.
-- ROLNIK, R. A cidade e a lei: legislação, política urbana e territórios na cidade de São Paulo.
-  São Paulo: Studio Nobel, 1997.
-- VILLAÇA, F. Reflexões sobre as cidades brasileiras. São Paulo: Studio Nobel, 2012.
 
 ## Aprendizado de máquina e IA aplicada à habitação
 
@@ -115,12 +95,6 @@ completos (com a revisão bibliográfica na íntegra) não fazem parte deste rep
   n. 2, p. 93-115, 1995.
 - MORAN, P. A. P. Notes on Continuous Stochastic Phenomena. *Biometrika*, v. 37, n. 1-2,
   p. 17-23, 1950.
-
-## Dados e fontes primárias
-
-- IBGE. Censo Demográfico 2010 / 2022: resultados gerais da amostra. Rio de Janeiro: IBGE.
-- IBGE. Malha de Setores Censitários — Censo 2022. Disponível em:
-  <https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/26565-malhas-de-setores-censitarios-divisoes-intramunicipais.html>
 
 ## Trabalhos anteriores do grupo de pesquisa (Cidades e Pessoas Conectadas)
 
