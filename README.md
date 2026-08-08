@@ -7,7 +7,6 @@ pesquisa **Cidades e Pessoas Conectadas**.
 **Bolsista:** Griselda Karen Sillerico Justo
 **Orientadora:** Profa. Dra. Elza Luli Miyasaka
 **Co-orientadoras:** Dra. Tatiane Ferreira Olivatto · Me. Priscila Kauana Barelli Forcel
-**Vigência:** out/2025 – out/2026
 
 ---
 
@@ -79,19 +78,6 @@ abordagem final combina:
 3. `notebooks/03_setor_censitario_desagregacao.ipynb` — pipeline final, do carregamento dos dados
    ao mapa final do déficit desagregado.
 
-## Dados
-
-| Arquivo | Nível geográfico | Linhas × Colunas | Descrição |
-|---|---|---|---|
-| `BD_SP_DEFICIT.xlsx` | Área de Ponderação | ~2.500 × 84 | Base de treino: 10 colunas de identificação geográfica + 68 variáveis explicativas (Censo, universo) + 5 componentes do déficit habitacional (FJP) + 1 identificador de AP |
-| `BANCO_SP_setorcensitario.xlsx` | Setor Censitário | ~90.000 × 83 | Base de aplicação: mesmas variáveis explicativas do Censo (nomes de coluna por extenso, tratados no notebook 02), sem os componentes do déficit (que é o que estamos estimando) |
-| `dicionario_variaveis.xlsx` | — | 83 variáveis | Descrição de cada coluna. Versão em Markdown: [`docs/dicionario_variaveis.md`](docs/dicionario_variaveis.md) |
-
-Todas as variáveis explicativas derivam do **questionário do universo** do Censo Demográfico do
-IBGE (2022); os componentes do déficit habitacional são calculados a partir do **questionário da
-amostra**, segundo a metodologia da Fundação João Pinheiro, e só existem em nível de Área de
-Ponderação — daí a necessidade da abordagem de desagregação descrita neste projeto.
-
 ## Metodologia (resumo)
 
 Ver [`docs/metodologia.md`](docs/metodologia.md) para o detalhamento completo. Em síntese:
@@ -112,43 +98,25 @@ com toda a revisão bibliográfica e discussão teórica) **não fazem parte des
 bibliografia consolidada está disponível em [`references/referencias.md`](references/referencias.md)
 e o resumo metodológico em [`docs/metodologia.md`](docs/metodologia.md).
 
-## Limitações e trabalhos futuros
+## Limitações 
 
 - A desagregação por propensão depende da qualidade do modelo de Área de Ponderação; ela garante
   consistência agregada (a soma bate com o total conhecido), mas não garante que a distribuição
-  *dentro* de cada AP seja perfeita — por isso a validação espacial (Moran/LISA) é parte
+  *dentro* de cada AP seja perfeita, por isso a validação espacial (Moran/LISA) é parte
   essencial da metodologia, não apenas um extra.
 - **Base censitária:** a proposta original previa o uso do Censo Demográfico 2022, mas os
   microdados da amostra desse Censo ainda não haviam sido divulgados pelo IBGE no início da
-  pesquisa (ver nota de rodapé da proposta). Por isso, a modelagem final (Random Forest +
-  desagregação por propensão, notebook 02) foi desenvolvida com o **Censo Demográfico de 2010**,
-  enquanto o teste exploratório com XGBoost (notebook 01) já incorporava dados mais recentes
+  pesquisa. Por isso, a modelagem final (Random Forest +
+  desagregação por propensão, notebook 03) foi desenvolvida com o **Censo Demográfico de 2010**,
+  enquanto o teste exploratório com XGBoost (notebook 02) já incorporava dados mais recentes
   conforme iam sendo liberados. Uma atualização natural do projeto é reexecutar o pipeline final
   com os microdados do Censo 2022 assim que integralmente disponíveis.
-- Próximos passos sugeridos: (i) testar outras técnicas de desagregação espacial (ex.: modelos
-  baseados em regressão geograficamente ponderada); (ii) incorporar dados de registros
-  administrativos (ex.: CadÚnico) como fontes auxiliares; (iii) validar as estimativas de setor
-  censitário contra alguma fonte de referência independente, quando disponível.
 
 ## Tecnologias
 
-Python · pandas · scikit-learn · XGBoost · SHAP · GeoPandas · libpysal · esda · splot ·
+Python · pandas · scikit-learn · XGBoost · Random Forest · SHAP · GeoPandas · libpysal · esda · splot ·
 matplotlib · seaborn
 
-## Licença
-
-Defina aqui a licença de sua preferência para o código deste repositório (ex.: MIT, CC-BY-4.0).
-Os dados do Censo Demográfico são de domínio público, disponibilizados pelo IBGE.
-
-## Citação
-
-Se este trabalho for útil para sua pesquisa, por favor cite:
-
-```
-SILLERICO JUSTO, G. K. Inteligência Artificial Aplicada à Estimativa do Déficit Habitacional:
-uma abordagem multiescalar do Estado de São Paulo. Relatório Final de Iniciação Científica
-(PIBITI/PROPQ). Orientação: Elza Luli Miyasaka. São Carlos: UFSCar, 2026.
-```
 
 ## Agradecimentos
 
