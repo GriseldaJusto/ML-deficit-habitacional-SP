@@ -20,7 +20,7 @@ desigualdades habitacionais dentro das cidades, já que uma AP pode agrupar cent
 com realidades muito diferentes entre si.
 
 Este projeto usa **aprendizado de máquina** para desagregar essa estimativa para o nível de
-**Setor Censitário (SC)** — a menor unidade de coleta do IBGE — no estado de São Paulo. A
+**Setor Censitário (SC)** no estado de São Paulo. A
 abordagem final combina:
 
 1. Um modelo **Random Forest**, treinado nas Áreas de Ponderação, para aprender a relação entre
