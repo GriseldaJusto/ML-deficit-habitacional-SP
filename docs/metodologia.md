@@ -15,7 +15,7 @@ O projeto foi conduzido em duas fases, com abordagens distintas:
 
 ## Fase 1 — Exploratória (XGBoost)
 
-**Notebook:** [`notebooks/02_AreaDePonderacao_IC.ipynb`](../notebooks/01_area_ponderacao_xgboost.ipynb)
+**Notebook:** [`notebooks/02_AreaDePonderacao_IC.ipynb`](../notebooks/02_AreaDePonderacao_IC.ipynb)
 
 1. Treinar um `XGBRegressor` em cada componente do déficit (domicílios precários, coabitação,
    ônus excessivo, adensamento, déficit total), separadamente para SP Capital e SP Exceto Capital.
@@ -24,7 +24,7 @@ O projeto foi conduzido em duas fases, com abordagens distintas:
 
 ## Fase 2 — Final (Random Forest + desagregação por propensão)
 
-**Notebook:** [`notebooks/03_setor_censitario_desagregacao.ipynb`](../notebooks/02_setor_censitario_desagregacao.ipynb)
+**Notebook:** [`notebooks/03_SetorCensitario_IC.ipynb`](../notebooks//03_SetorCensitario_IC.ipynb)
 
 1. **Modelagem:** um único `RandomForestRegressor` (200 árvores) é treinado no banco consolidado
    de Áreas de Ponderação (`BD_SP_DEFICIT.xlsx`), usando 68 variáveis do questionário do universo
@@ -35,13 +35,7 @@ O projeto foi conduzido em duas fases, com abordagens distintas:
    - O modelo é aplicado aos Setores Censitários (`BANCO_SP_setorcensitario.xlsx`), gerando um
      escore de propensão relativa (não um valor de déficit) para cada setor.
    - Dentro de cada AP, os escores são normalizados (soma = 1) e usados como pesos para
-     redistribuir o déficit total, já conhecido, da AP entre seus setores:
-
-     ```
-     P_i = S_i / Σ S_j          (peso do setor i dentro da AP)
-     D_i = P_i × D_AP           (déficit estimado do setor i)
-     ```
-
+     redistribuir o déficit total, já conhecido, da AP entre seus setores.
    - Essa construção garante, por definição, que a soma dos setores de uma AP reproduz
      exatamente o valor oficial da AP.
 3. **Auditoria:** verificação numérica de que a soma dos setores bate com o total da AP
