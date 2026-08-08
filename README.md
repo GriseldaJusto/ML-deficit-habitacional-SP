@@ -72,9 +72,9 @@ abordagem final combina:
 
 1. `notebooks/01_conceitos_teoricos.ipynb` *(opcional, mas recomendado)* — explica as técnicas
    usadas antes de mexer nos dados reais.
-2. `notebooks/02_area_ponderacao_xgboost.ipynb` *(opcional)* — documenta a fase exploratória e por
+2. `notebooks/02_AreaDePonderacao_IC.ipynb` — documenta a fase exploratória e por
    que a abordagem mudou.
-3. `notebooks/03_setor_censitario_desagregacao.ipynb` — pipeline final, do carregamento dos dados
+3. `notebooks/03_SetorCensitario_IC.ipynb` — pipeline final, do carregamento dos dados
    ao mapa final do déficit desagregado.
 
 ## Metodologia (resumo)
