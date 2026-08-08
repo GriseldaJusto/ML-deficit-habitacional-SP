@@ -13,23 +13,18 @@ apenas em nível de **Área de Ponderação (AP)**, uma unidade territorial maio
 
 O projeto foi conduzido em duas fases, com abordagens distintas:
 
-## Fase 1 — Exploratória (XGBoost, downscaling direto)
+## Fase 1 — Exploratória (XGBoost)
 
-**Notebook:** [`notebooks/01_area_ponderacao_xgboost.ipynb`](../notebooks/01_area_ponderacao_xgboost.ipynb)
+**Notebook:** [`notebooks/02_AreaDePonderacao_IC.ipynb`](../notebooks/01_area_ponderacao_xgboost.ipynb)
 
 1. Treinar um `XGBRegressor` em cada componente do déficit (domicílios precários, coabitação,
    ônus excessivo, adensamento, déficit total), separadamente para SP Capital e SP Exceto Capital.
 2. Testar a aplicação **direta** do modelo aos setores censitários, somando as predições de
    todos os setores de uma AP e comparando com o valor real da FJP para aquela AP.
 
-**Resultado:** os modelos tiveram bom desempenho nas Áreas de Ponderação (R² entre 0,62 e 0,98
-para a maioria dos componentes), mas o teste de downscaling direto revelou **superestimação
-sistemática** ao nível de setor — sintoma do *Modifiable Areal Unit Problem* (MAUP). Essa
-descoberta motivou a mudança de estratégia na Fase 2.
-
 ## Fase 2 — Final (Random Forest + desagregação por propensão)
 
-**Notebook:** [`notebooks/02_setor_censitario_desagregacao.ipynb`](../notebooks/02_setor_censitario_desagregacao.ipynb)
+**Notebook:** [`notebooks/03_setor_censitario_desagregacao.ipynb`](../notebooks/02_setor_censitario_desagregacao.ipynb)
 
 1. **Modelagem:** um único `RandomForestRegressor` (200 árvores) é treinado no banco consolidado
    de Áreas de Ponderação (`BD_SP_DEFICIT.xlsx`), usando 68 variáveis do questionário do universo
