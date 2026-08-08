@@ -57,8 +57,7 @@ abordagem final combina:
 │
 ├── docs/
 │   ├── metodologia.md              <- resumo metodológico das duas fases
-│   ├── DICIONARIO VARIAVEIS.xlsx              <- dicionário de variáveis
-│   └── dicionario_variaveis.md     <- dicionário de variáveis em Markdown
+│   └── DICIONARIO VARIAVEIS.xlsx              <- dicionário de variáveis
 │
 ├── references/
 │   └── referencias.md              <- bibliografia do projeto
